@@ -1,0 +1,415 @@
+{
+  "data/raw/aapl/companyfacts.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+    "bytes": 3789099,
+    "fetched_at": "2026-09-10T03:07:24+00:00",
+    "http_status": 200,
+    "note": "Every XBRL fact Apple has ever reported, all concepts, all periods"
+  },
+  "data/raw/aapl/concept_AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax.json",
+    "bytes": 2903,
+    "fetched_at": "2026-09-10T03:07:24+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax"
+  },
+  "data/raw/aapl/concept_AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax.json",
+    "bytes": 2900,
+    "fetched_at": "2026-09-10T03:07:25+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax"
+  },
+  "data/raw/aapl/concept_AvailableForSaleDebtSecuritiesAmortizedCostBasis.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleDebtSecuritiesAmortizedCostBasis.json",
+    "bytes": 2822,
+    "fetched_at": "2026-09-10T03:07:25+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleDebtSecuritiesAmortizedCostBasis"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtMaturitiesRollingAfterYearTenFairValue.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtMaturitiesRollingAfterYearTenFairValue.json",
+    "bytes": 2745,
+    "fetched_at": "2026-09-10T03:07:25+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtMaturitiesRollingAfterYearTenFairValue"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtMaturitiesRollingYearSixThroughTenFairValue.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtMaturitiesRollingYearSixThroughTenFairValue.json",
+    "bytes": 2772,
+    "fetched_at": "2026-09-10T03:07:26+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtMaturitiesRollingYearSixThroughTenFairValue"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtMaturitiesRollingYearTwoThroughFiveFairValue.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtMaturitiesRollingYearTwoThroughFiveFairValue.json",
+    "bytes": 2781,
+    "fetched_at": "2026-09-10T03:07:26+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtMaturitiesRollingYearTwoThroughFiveFairValue"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDate.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDate.json",
+    "bytes": 2517,
+    "fetched_at": "2026-09-10T03:07:27+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDate"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtSecurities.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtSecurities.json",
+    "bytes": 2790,
+    "fetched_at": "2026-09-10T03:07:27+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtSecurities"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtSecuritiesCurrent.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtSecuritiesCurrent.json",
+    "bytes": 1471,
+    "fetched_at": "2026-09-10T03:07:28+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtSecuritiesCurrent"
+  },
+  "data/raw/aapl/concept_AvailableForSaleSecuritiesDebtSecuritiesNoncurrent.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/AvailableForSaleSecuritiesDebtSecuritiesNoncurrent.json",
+    "bytes": 1480,
+    "fetched_at": "2026-09-10T03:07:28+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:AvailableForSaleSecuritiesDebtSecuritiesNoncurrent"
+  },
+  "data/raw/aapl/concept_CommercialPaper.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/CommercialPaper.json",
+    "bytes": 13147,
+    "fetched_at": "2026-09-10T03:11:24+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:CommercialPaper"
+  },
+  "data/raw/aapl/concept_DebtInstrumentCarryingAmount.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtInstrumentCarryingAmount.json",
+    "bytes": 10382,
+    "fetched_at": "2026-09-10T03:07:28+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtInstrumentCarryingAmount"
+  },
+  "data/raw/aapl/concept_DebtInstrumentUnamortizedDiscount.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtInstrumentUnamortizedDiscount.json",
+    "bytes": 2884,
+    "fetched_at": "2026-09-10T03:07:29+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtInstrumentUnamortizedDiscount"
+  },
+  "data/raw/aapl/concept_DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet.json",
+    "bytes": 6681,
+    "fetched_at": "2026-09-10T03:07:29+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet"
+  },
+  "data/raw/aapl/concept_DebtInstrumentUnamortizedDiscountPremiumNet.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtInstrumentUnamortizedDiscountPremiumNet.json",
+    "bytes": 1090,
+    "fetched_at": "2026-09-10T03:07:30+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtInstrumentUnamortizedDiscountPremiumNet"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLonger.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLonger.json",
+    "bytes": 1690,
+    "fetched_at": "2026-09-10T03:07:30+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLonger"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLongerAccumulatedLoss.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLongerAccumulatedLoss.json",
+    "bytes": 1742,
+    "fetched_at": "2026-09-10T03:07:30+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPosition12MonthsOrLongerAccumulatedLoss"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12Months.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12Months.json",
+    "bytes": 1692,
+    "fetched_at": "2026-09-10T03:07:31+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12Months"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12MonthsAccumulatedLoss.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12MonthsAccumulatedLoss.json",
+    "bytes": 1739,
+    "fetched_at": "2026-09-10T03:07:31+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleContinuousUnrealizedLossPositionLessThan12MonthsAccumulatedLoss"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleRestricted.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleRestricted.json",
+    "bytes": 2383,
+    "fetched_at": "2026-09-10T03:07:32+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleRestricted"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleUnrealizedLossPosition.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleUnrealizedLossPosition.json",
+    "bytes": 1539,
+    "fetched_at": "2026-09-10T03:07:32+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleUnrealizedLossPosition"
+  },
+  "data/raw/aapl/concept_DebtSecuritiesAvailableForSaleUnrealizedLossPositionAccumulatedLoss.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/DebtSecuritiesAvailableForSaleUnrealizedLossPositionAccumulatedLoss.json",
+    "bytes": 1649,
+    "fetched_at": "2026-09-10T03:07:33+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:DebtSecuritiesAvailableForSaleUnrealizedLossPositionAccumulatedLoss"
+  },
+  "data/raw/aapl/concept_InterestExpenseDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/InterestExpenseDebt.json",
+    "bytes": 11180,
+    "fetched_at": "2026-09-10T03:07:33+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:InterestExpenseDebt"
+  },
+  "data/raw/aapl/concept_LongTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebt.json",
+    "bytes": 7649,
+    "fetched_at": "2026-09-10T03:07:33+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebt"
+  },
+  "data/raw/aapl/concept_LongTermDebtCurrent.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtCurrent.json",
+    "bytes": 12430,
+    "fetched_at": "2026-09-10T03:07:34+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtCurrent"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive.json",
+    "bytes": 3575,
+    "fetched_at": "2026-09-10T03:07:34+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths.json",
+    "bytes": 2795,
+    "fetched_at": "2026-09-10T03:07:35+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive.json",
+    "bytes": 3540,
+    "fetched_at": "2026-09-10T03:07:35+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour.json",
+    "bytes": 3522,
+    "fetched_at": "2026-09-10T03:07:35+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree.json",
+    "bytes": 3542,
+    "fetched_at": "2026-09-10T03:07:36+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo.json",
+    "bytes": 3504,
+    "fetched_at": "2026-09-10T03:07:36+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo"
+  },
+  "data/raw/aapl/concept_LongTermDebtMaturitiesRepaymentsOfPrincipalRemainderOfFiscalYear.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtMaturitiesRepaymentsOfPrincipalRemainderOfFiscalYear.json",
+    "bytes": 1104,
+    "fetched_at": "2026-09-10T03:07:36+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalRemainderOfFiscalYear"
+  },
+  "data/raw/aapl/concept_LongTermDebtNoncurrent.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/LongTermDebtNoncurrent.json",
+    "bytes": 12621,
+    "fetched_at": "2026-09-10T03:07:37+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:LongTermDebtNoncurrent"
+  },
+  "data/raw/aapl/concept_OtherShortTermBorrowings.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/OtherShortTermBorrowings.json",
+    "bytes": 829,
+    "fetched_at": "2026-09-10T03:11:25+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:OtherShortTermBorrowings"
+  },
+  "data/raw/aapl/concept_PaymentsToAcquireAvailableForSaleSecuritiesDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/PaymentsToAcquireAvailableForSaleSecuritiesDebt.json",
+    "bytes": 12113,
+    "fetched_at": "2026-09-10T03:07:37+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt"
+  },
+  "data/raw/aapl/concept_ProceedsFromIssuanceOfLongTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromIssuanceOfLongTermDebt.json",
+    "bytes": 14649,
+    "fetched_at": "2026-09-10T03:07:38+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromIssuanceOfLongTermDebt"
+  },
+  "data/raw/aapl/concept_ProceedsFromOtherShortTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromOtherShortTermDebt.json",
+    "bytes": 1809,
+    "fetched_at": "2026-09-10T03:07:38+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromOtherShortTermDebt"
+  },
+  "data/raw/aapl/concept_ProceedsFromRepaymentsOfCommercialPaper.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromRepaymentsOfCommercialPaper.json",
+    "bytes": 16971,
+    "fetched_at": "2026-09-10T03:11:25+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromRepaymentsOfCommercialPaper"
+  },
+  "data/raw/aapl/concept_ProceedsFromRepaymentsOfShortTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromRepaymentsOfShortTermDebt.json",
+    "bytes": 637,
+    "fetched_at": "2026-09-10T03:07:38+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromRepaymentsOfShortTermDebt"
+  },
+  "data/raw/aapl/concept_ProceedsFromRepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromRepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths.json",
+    "bytes": 13129,
+    "fetched_at": "2026-09-10T03:07:39+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromRepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths"
+  },
+  "data/raw/aapl/concept_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess.json",
+    "bytes": 14816,
+    "fetched_at": "2026-09-10T03:07:39+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess"
+  },
+  "data/raw/aapl/concept_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromSaleOfAvailableForSaleSecuritiesDebt.json",
+    "bytes": 12084,
+    "fetched_at": "2026-09-10T03:07:40+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt"
+  },
+  "data/raw/aapl/concept_ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths.json",
+    "bytes": 13234,
+    "fetched_at": "2026-09-10T03:07:40+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths"
+  },
+  "data/raw/aapl/concept_RepaymentsOfLongTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/RepaymentsOfLongTermDebt.json",
+    "bytes": 12658,
+    "fetched_at": "2026-09-10T03:07:40+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:RepaymentsOfLongTermDebt"
+  },
+  "data/raw/aapl/concept_RepaymentsOfOtherShortTermDebt.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/RepaymentsOfOtherShortTermDebt.json",
+    "bytes": 757,
+    "fetched_at": "2026-09-10T03:07:41+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:RepaymentsOfOtherShortTermDebt"
+  },
+  "data/raw/aapl/concept_RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths.json",
+    "bytes": 14482,
+    "fetched_at": "2026-09-10T03:07:41+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths"
+  },
+  "data/raw/aapl/concept_ShortTermDebtWeightedAverageInterestRate.json": {
+    "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/ShortTermDebtWeightedAverageInterestRate.json",
+    "bytes": 5127,
+    "fetched_at": "2026-09-10T03:07:41+00:00",
+    "http_status": 200,
+    "note": "Every reported value of us-gaap:ShortTermDebtWeightedAverageInterestRate"
+  },
+  "data/raw/aapl/filings/10-K_FY2022_0000320193-22-000108/aapl-20220924.htm": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+    "bytes": 2049857,
+    "fetched_at": "2026-09-10T03:07:44+00:00",
+    "http_status": 200,
+    "note": "Primary document of 10-K FY2022"
+  },
+  "data/raw/aapl/filings/10-K_FY2022_0000320193-22-000108/index.json": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/index.json",
+    "bytes": 8768,
+    "fetched_at": "2026-09-10T03:07:43+00:00",
+    "http_status": 200,
+    "note": "File listing for 10-K FY2022"
+  },
+  "data/raw/aapl/filings/10-K_FY2023_0000320193-23-000106/aapl-20230930.htm": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+    "bytes": 1558924,
+    "fetched_at": "2026-09-10T03:07:43+00:00",
+    "http_status": 200,
+    "note": "Primary document of 10-K FY2023"
+  },
+  "data/raw/aapl/filings/10-K_FY2023_0000320193-23-000106/index.json": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/index.json",
+    "bytes": 9494,
+    "fetched_at": "2026-09-10T03:07:43+00:00",
+    "http_status": 200,
+    "note": "File listing for 10-K FY2023"
+  },
+  "data/raw/aapl/filings/10-K_FY2024_0000320193-24-000123/aapl-20240928.htm": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+    "bytes": 1503780,
+    "fetched_at": "2026-09-10T03:07:42+00:00",
+    "http_status": 200,
+    "note": "Primary document of 10-K FY2024"
+  },
+  "data/raw/aapl/filings/10-K_FY2024_0000320193-24-000123/index.json": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/index.json",
+    "bytes": 10170,
+    "fetched_at": "2026-09-10T03:07:42+00:00",
+    "http_status": 200,
+    "note": "File listing for 10-K FY2024"
+  },
+  "data/raw/aapl/filings/10-Q_Q3FY2026_0000320193-26-000020/aapl-20260627.htm": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+    "bytes": 1018210,
+    "fetched_at": "2026-09-10T03:07:44+00:00",
+    "http_status": 200,
+    "note": "Primary document of 10-Q Q3FY2026"
+  },
+  "data/raw/aapl/filings/10-Q_Q3FY2026_0000320193-26-000020/index.json": {
+    "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/index.json",
+    "bytes": 6311,
+    "fetched_at": "2026-09-10T03:07:44+00:00",
+    "http_status": 200,
+    "note": "File listing for 10-Q Q3FY2026"
+  },
+  "data/raw/aapl/submissions.json": {
+    "url": "https://data.sec.gov/submissions/CIK0000320193.json",
+    "bytes": 164121,
+    "fetched_at": "2026-09-10T03:07:23+00:00",
+    "http_status": 200,
+    "note": "Apple filing history: form, filing date, period, accession, primary document"
+  },
+  "data/raw/aapl/submissions_CIK0000320193-submissions-001.json": {
+    "url": "https://data.sec.gov/submissions/CIK0000320193-submissions-001.json",
+    "bytes": 201920,
+    "fetched_at": "2026-09-10T03:07:42+00:00",
+    "http_status": 200,
+    "note": "Older page of Apple's filing history"
+  },
+  "data/raw/company_tickers.json": {
+    "url": "https://www.sec.gov/files/company_tickers.json",
+    "bytes": 796513,
+    "fetched_at": "2026-09-10T03:07:22+00:00",
+    "http_status": 200,
+    "note": "SEC ticker -> CIK mapping for every registrant"
+  }
+}

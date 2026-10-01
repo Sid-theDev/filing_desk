@@ -1,0 +1,24 @@
+[
+  {
+    "id": "t3-debt-disclosures-fy2022-fy2024",
+    "tier": 3,
+    "should_refuse": false,
+    "correct": false,
+    "checks_passed": true,
+    "refused": false,
+    "tool_calls": 64,
+    "duplicate_calls": 0,
+    "refetches": 4,
+    "peak_context_chars": 42940,
+    "compactions": 13,
+    "compact_after_chars": 12000,
+    "tokens": 123747,
+    "cost_usd": 0.026526,
+    "seconds": 61.41,
+    "stop_reason": "step_limit",
+    "model": "openai/gpt-5.6-luna",
+    "prompt_version": "v2",
+    "note": "missing 2.31%",
+    "trace": "C:\\Users\\Siddhanth\\Desktop\\Finance Projects\\FINANCE-RAG-PIPELINE\\runs\\20260910-135650_for-each-of-apple-s-fy2022-fy2023-and-fy2024-10-.json"
+  }
+]

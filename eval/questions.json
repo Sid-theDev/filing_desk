@@ -1,0 +1,190 @@
+[
+  {
+    "id": "t1-noncurrent-term-debt-fy2024",
+    "tier": 1,
+    "question": "What was Apple's non-current term debt (long-term debt excluding current maturities) at the end of FY2024?",
+    "expect": {"facts": [{"concepts": ["LongTermDebtNoncurrent"], "period": "FY2024"}]}
+  },
+  {
+    "id": "t1-current-term-debt-fy2023",
+    "tier": 1,
+    "question": "What was the current portion of Apple's term debt at the end of FY2023?",
+    "expect": {"facts": [{"concepts": ["LongTermDebtCurrent"], "period": "FY2023"}]}
+  },
+  {
+    "id": "t1-cp-q3fy2026",
+    "tier": 1,
+    "question": "How much commercial paper did Apple have outstanding at the end of the third quarter of fiscal 2026?",
+    "expect": {"facts": [{"concepts": ["CommercialPaper"], "period": "Q3FY2026"}]}
+  },
+  {
+    "id": "t1-term-debt-repaid-fy2024",
+    "tier": 1,
+    "question": "How much term debt did Apple repay during fiscal year 2024?",
+    "expect": {"facts": [{"concepts": ["RepaymentsOfLongTermDebt"], "period": "FY2024"}]}
+  },
+  {
+    "id": "t1-total-term-debt-fy2023",
+    "tier": 1,
+    "question": "What was the total carrying amount of Apple's term debt, current and non-current combined, at the end of FY2023?",
+    "expect": {"facts": [{"concepts": ["LongTermDebt"], "period": "FY2023"}]}
+  },
+  {
+    "id": "t1-principal-due-12-months-fy2024",
+    "tier": 1,
+    "question": "How much term debt principal was scheduled to mature within twelve months after the end of FY2024?",
+    "expect": {"facts": [{"concepts": ["LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths"], "period": "FY2024"}]}
+  },
+  {
+    "id": "t1-term-debt-repaid-9m-fy2026",
+    "tier": 1,
+    "question": "How much term debt did Apple repay in the first nine months of fiscal 2026?",
+    "expect": {"facts": [{"concepts": ["RepaymentsOfLongTermDebt"], "period": "Q3FY2026"}]}
+  },
+  {
+    "id": "t1-debt-issued-fy2022",
+    "tier": 1,
+    "question": "How much did Apple raise from issuing term debt in fiscal 2022?",
+    "expect": {"facts": [{"concepts": ["ProceedsFromIssuanceOfLongTermDebt"], "period": "FY2022"}]}
+  },
+  {
+    "id": "t2-cp-use-of-proceeds-fy2024",
+    "tier": 2,
+    "question": "According to Apple's FY2024 10-K, what does Apple use the net proceeds from its commercial paper program for?",
+    "expect": {"keywords_all": ["general corporate purposes"]}
+  },
+  {
+    "id": "t2-cp-rate-fy2024",
+    "tier": 2,
+    "question": "According to Apple's FY2024 10-K, what was the weighted-average interest rate of its commercial paper at the end of fiscal 2024?",
+    "expect": {"percents": [5.0]}
+  },
+  {
+    "id": "t2-notes-principal-fy2024",
+    "tier": 2,
+    "question": "In the liquidity discussion of Apple's FY2024 10-K, what aggregate principal amount of fixed-rate notes was outstanding, and how much of it was payable within 12 months?",
+    "expect": {"amounts": [97300000000, 10900000000]}
+  },
+  {
+    "id": "t2-rate-sensitivity-fy2024",
+    "tier": 2,
+    "question": "According to the interest rate risk disclosure in Apple's FY2024 10-K, how much would a 100 basis point increase in interest rates raise annual interest expense on its term debt, as of the end of FY2024?",
+    "expect": {"amounts": [139000000]}
+  },
+  {
+    "id": "t2-future-interest-fy2023",
+    "tier": 2,
+    "question": "Per the liquidity discussion in Apple's FY2023 10-K, what were total future interest payments on its Notes, and how much was payable within 12 months?",
+    "expect": {"amounts": [41100000000, 2900000000]}
+  },
+  {
+    "id": "t2-hedged-term-debt-q3fy2026",
+    "tier": 2,
+    "question": "According to Apple's Q3 FY2026 10-Q, how much of its term debt was subject to fair value hedges at the end of that quarter?",
+    "expect": {"amounts": [10400000000]}
+  },
+  {
+    "id": "t2-unrestricted-cash-fy2024",
+    "tier": 2,
+    "question": "What did Apple's FY2024 10-K say its unrestricted cash, cash equivalents and marketable securities totaled at year end?",
+    "expect": {"amounts": [140800000000]}
+  },
+  {
+    "id": "t3-long-term-debt-fy2022-fy2024",
+    "tier": 3,
+    "question": "How has Apple's long-term debt changed across FY2022-FY2024, and what reason does management give?",
+    "expect": {
+      "facts": [
+        {"concepts": ["LongTermDebt", "LongTermDebtNoncurrent"], "period": "FY2022"},
+        {"concepts": ["LongTermDebt", "LongTermDebtNoncurrent"], "period": "FY2023"},
+        {"concepts": ["LongTermDebt", "LongTermDebtNoncurrent"], "period": "FY2024"}
+      ],
+      "keywords_any": ["repay", "matur"]
+    }
+  },
+  {
+    "id": "t3-cp-change-fy2023-fy2024",
+    "tier": 3,
+    "question": "How did Apple's commercial paper outstanding change between the end of FY2023 and the end of FY2024?",
+    "expect": {
+      "facts": [
+        {"concepts": ["CommercialPaper"], "period": "FY2023"},
+        {"concepts": ["CommercialPaper"], "period": "FY2024"}
+      ]
+    }
+  },
+  {
+    "id": "t3-noncurrent-q3fy2026-vs-fy2025",
+    "tier": 3,
+    "question": "Compare Apple's non-current term debt at the end of Q3 FY2026 with the end of FY2025.",
+    "expect": {
+      "facts": [
+        {"concepts": ["LongTermDebtNoncurrent"], "period": "Q3FY2026"},
+        {"concepts": ["LongTermDebtNoncurrent"], "period": "FY2025"}
+      ]
+    }
+  },
+  {
+    "id": "t3-cp-rate-fy2022-fy2024",
+    "tier": 3,
+    "question": "How did the weighted-average interest rate on Apple's commercial paper move from the end of FY2022 to the end of FY2024? Give the rate at each year end.",
+    "expect": {"percents": [2.31, 5.28, 5.0]}
+  },
+  {
+    "id": "t3-repayments-fy2022-fy2024",
+    "tier": 3,
+    "question": "Compare how much term debt Apple repaid in each of FY2022, FY2023 and FY2024.",
+    "expect": {
+      "facts": [
+        {"concepts": ["RepaymentsOfLongTermDebt"], "period": "FY2022"},
+        {"concepts": ["RepaymentsOfLongTermDebt"], "period": "FY2023"},
+        {"concepts": ["RepaymentsOfLongTermDebt"], "period": "FY2024"}
+      ]
+    }
+  },
+  {
+    "id": "t3-notes-principal-fy2022-fy2024",
+    "tier": 3,
+    "question": "According to the liquidity discussions in Apple's 10-Ks, how did the aggregate principal amount of its fixed-rate notes change from FY2022 to FY2024? Give the amount for each year.",
+    "expect": {"amounts": [111800000000, 106600000000, 97300000000]}
+  },
+  {
+    "id": "t4-other-company",
+    "tier": 4,
+    "question": "What was Microsoft's long-term debt at the end of its fiscal year 2024?",
+    "expect": {"refusal": true}
+  },
+  {
+    "id": "t4-future-period",
+    "tier": 4,
+    "question": "What was Apple's term debt at the end of fiscal year 2031?",
+    "expect": {"refusal": true}
+  },
+  {
+    "id": "t4-not-disclosed",
+    "tier": 4,
+    "question": "What coupon rate has Apple agreed for the bond it will issue in 2029?",
+    "expect": {"refusal": true}
+  },
+  {
+    "id": "t4-false-premise-increase",
+    "tier": 4,
+    "question": "Why did Apple's long-term debt increase between FY2023 and FY2024?",
+    "expect": {
+      "allow_refusal": true,
+      "keywords_any": ["decrease", "declin", "fell", "lower", "did not increase", "didn't increase", "reduc", "down"]
+    }
+  },
+  {
+    "id": "t4-unfiled-quarter",
+    "tier": 4,
+    "question": "What was Apple's commercial paper balance at the end of the first quarter of fiscal 2027?",
+    "expect": {"refusal": true}
+  },
+  {
+    "id": "t4-credit-rating",
+    "tier": 4,
+    "question": "What credit rating did Moody's assign to Apple's term debt, according to Apple's FY2024 10-K?",
+    "expect": {"refusal": true}
+  }
+]

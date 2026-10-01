@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filing Desk — Build Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f5f7;
+  --surface:#ffffff;
+  --surface-2:#eceff3;
+  --ink:#131b26;
+  --muted:#5a6679;
+  --line:#dde2ea;
+  --line-strong:#c3ccd8;
+  --accent:#9a5606;
+  --accent-ink:#7d4605;
+  --accent-soft:#fbf1e2;
+  --out:#8d3b3b;
+  --out-soft:#f9eded;
+  --ok:#2f6b4f;
+  --ok-soft:#e9f3ed;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+
+  --measure:41rem;
+  --wide:58rem;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e141c; --surface:#151d27; --surface-2:#1b2430;
+    --ink:#e4e9f0; --muted:#93a0b3; --line:#243040; --line-strong:#334154;
+    --accent:#e2a556; --accent-ink:#f0bd7c; --accent-soft:#231a0f;
+    --out:#d98b8b; --out-soft:#2a1a1a;
+    --ok:#7dc3a0; --ok-soft:#14241c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e141c; --surface:#151d27; --surface-2:#1b2430;
+  --ink:#e4e9f0; --muted:#93a0b3; --line:#243040; --line-strong:#334154;
+  --accent:#e2a556; --accent-ink:#f0bd7c; --accent-soft:#231a0f;
+  --out:#d98b8b; --out-soft:#2a1a1a;
+  --ok:#7dc3a0; --ok-soft:#14241c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--f-body); font-size:17px; line-height:1.62;
+  margin:0; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 1.5rem 6rem}
+.col{max-width:var(--measure)}
+
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:2.5rem;line-height:1.08;font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.45rem;font-weight:600;letter-spacing:-.01em}
+h3{font-size:1.02rem;font-weight:600}
+h4{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+p{margin:0}
+.lede{font-size:1.16rem;line-height:1.55;color:var(--muted)}
+.eyebrow{font-family:var(--f-display);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.mono{font-family:var(--f-mono);font-size:.86em}
+.muted{color:var(--muted)}
+small{font-size:.86rem}
+
+header{border-bottom:1px solid var(--line);background:var(--surface);padding:3.25rem 0 2.25rem;margin-bottom:3rem}
+header .wrap{padding-bottom:0}
+.hstack{display:flex;flex-direction:column;gap:1rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;font-family:var(--f-display);font-size:.78rem;font-weight:500}
+.meta span{border:1px solid var(--line-strong);color:var(--muted);padding:.24rem .6rem;border-radius:2px}
+
+section{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:3.6rem}
+.sechead{display:flex;flex-direction:column;gap:.35rem}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* rails */
+.rails{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.rail{background:var(--surface);padding:1.1rem 1.15rem;display:flex;flex-direction:column;gap:.35rem}
+.rail h3{font-size:.95rem}
+.rail p{font-size:.94rem;color:var(--muted);line-height:1.5}
+
+/* diagram */
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:1.4rem 1rem .9rem;overflow-x:auto}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:.8rem;padding:0 .4rem;line-height:1.5}
+svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* phases */
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:1.6rem;scroll-margin-top:1rem}
+.phase>.head{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem 1.5rem;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.num{font-family:var(--f-display);font-weight:700;font-size:1.5rem;color:var(--accent);line-height:1;min-width:2.4rem;padding-top:.15rem}
+.head .t{display:flex;flex-direction:column;gap:.25rem;flex:1}
+.head h2{font-size:1.3rem}
+.head .sub{font-size:.98rem;color:var(--muted);line-height:1.45}
+.prog{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);white-space:nowrap;padding-top:.4rem}
+.body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:1.3rem}
+.why{font-size:1rem;line-height:1.55;border-left:2px solid var(--accent);padding-left:.9rem;color:var(--ink)}
+
+.stage{display:flex;flex-direction:column;gap:.55rem}
+.stage h3{display:flex;gap:.55rem;align-items:baseline}
+.stage h3 .sn{font-family:var(--f-mono);font-size:.8rem;color:var(--accent);font-weight:500}
+.stage>p{font-size:.97rem;color:var(--muted);line-height:1.5}
+
+ul.steps{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.42rem}
+ul.steps li{display:flex;gap:.6rem;align-items:flex-start;font-size:.97rem;line-height:1.5}
+ul.steps input[type=checkbox]{margin:.42rem 0 0;flex:0 0 auto;accent-color:var(--accent);width:.92rem;height:.92rem;cursor:pointer}
+ul.steps li.done>span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-strong)}
+
+.box{border:1px solid var(--line);border-radius:3px;padding:.95rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.box h4{color:var(--muted)}
+.box ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem}
+.box li{font-size:.95rem;line-height:1.5}
+.gate{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 32%,transparent)}
+.gate h4{color:var(--accent-ink)}
+.gate p{font-size:1rem;line-height:1.55}
+.trap{background:var(--out-soft);border-color:color-mix(in srgb,var(--out) 28%,transparent)}
+.trap h4{color:var(--out)}
+.trap p{font-size:.95rem;line-height:1.5}
+.dec{background:var(--surface-2)}
+
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:3px}
+th,td{text-align:left;padding:.62rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td.p{font-family:var(--f-mono);color:var(--accent);white-space:nowrap;width:3rem}
+.tablewrap{overflow-x:auto}
+
+.toc{display:flex;flex-wrap:wrap;gap:.4rem}
+.toc a{font-family:var(--f-display);font-size:.82rem;text-decoration:none;color:var(--muted);border:1px solid var(--line-strong);padding:.28rem .62rem;border-radius:2px}
+.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+code{font-family:var(--f-mono);font-size:.85em;background:var(--surface-2);padding:.08em .34em;border-radius:2px;border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding-top:1.4rem;color:var(--muted);font-size:.92rem;line-height:1.55}
+@media (max-width:620px){
+  h1{font-size:2rem}
+  .head{flex-wrap:wrap}
+  .prog{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hstack col">
+      <p class="eyebrow">Implementation plan</p>
+      <h1>Filing Desk — build plan</h1>
+      <p class="lede">Seven phases, in order, each ending at a gate you can check rather than a feeling that it's probably fine. No spec, no code — this is the flow you work through and tick off.</p>
+      <div class="meta">
+        <span>7 phases</span>
+        <span>Gate-driven</span>
+        <span>No dates</span>
+        <span>Stack decided later</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="sechead col">
+      <p class="eyebrow">Before anything</p>
+      <h2>Four rails that hold for the whole build</h2>
+    </div>
+    <p class="col">These are not phases. They are constraints that apply from the first hour to the last, and every phase below assumes them.</p>
+    <div class="rails">
+      <div class="rail">
+        <h3>One question is the compass</h3>
+        <p>“How has Apple's long-term debt changed across FY2022–FY2024, and what reason does management give?” Every design argument gets settled by asking whether it moves that question closer to answered.</p>
+      </div>
+      <div class="rail">
+        <h3>Cache every byte you fetch</h3>
+        <p>Raw responses go to disk, keyed by URL, never overwritten. You will re-run this hundreds of times. EDGAR is rate-limited and you are not entitled to hammer it.</p>
+      </div>
+      <div class="rail">
+        <h3>Ground truth before cleverness</h3>
+        <p>XBRL gives you the reported number for free. Anything your system produces can be checked against it. Build that channel first and you can grade yourself forever after.</p>
+      </div>
+      <div class="rail">
+        <h3>Two logs, kept by hand</h3>
+        <p>A decisions log (what you chose, why, what you rejected) and an experiment log (what you changed, what the numbers did). The write-up in Phase 7 is assembled from these, not from memory.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead col">
+      <p class="eyebrow">Shape of the build</p>
+      <h2>The spine</h2>
+    </div>
+    <figure>
+      <svg viewBox="0 0 900 250" role="img" aria-label="Seven phases in sequence, each producing an artifact and ending at a gate">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,1 L9,5 L0,9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          </marker>
+        </defs>
+        <g style="color:var(--line-strong)">
+          <line x1="60" y1="125" x2="855" y2="125" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+        </g>
+        <g font-family="Archivo, sans-serif">
+          <!-- nodes -->
+          <g>
+            <circle cx="60"  cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="190" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="320" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="450" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="580" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="710" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="840" cy="125" r="17" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+          </g>
+          <g fill="var(--accent-ink)" font-size="13" font-weight="700" text-anchor="middle">
+            <text x="60"  y="130">1</text><text x="190" y="130">2</text><text x="320" y="130">3</text>
+            <text x="450" y="130">4</text><text x="580" y="130">5</text><text x="710" y="130">6</text>
+            <text x="840" y="130">7</text>
+          </g>
+          <!-- above: what you build -->
+          <g fill="var(--ink)" font-size="11.5" font-weight="600" text-anchor="middle">
+            <text x="60"  y="88">One number,</text><text x="60"  y="102">by hand</text>
+            <text x="190" y="88">Four tools as</text><text x="190" y="102">plain functions</text>
+            <text x="320" y="88">MCP server</text><text x="320" y="102">(Project 1 ships)</text>
+            <text x="450" y="88">The agent loop</text><text x="450" y="102">you write</text>
+            <text x="580" y="88">Memory &amp;</text><text x="580" y="102">context budget</text>
+            <text x="710" y="88">Eval set,</text><text x="710" y="102">scorer, traces</text>
+            <text x="840" y="88">README with</text><text x="840" y="102">real numbers</text>
+          </g>
+          <!-- below: gate -->
+          <g fill="var(--muted)" font-size="10.5" text-anchor="middle">
+            <text x="60"  y="165">two sources</text><text x="60"  y="178">agree</text>
+            <text x="190" y="165">you can answer</text><text x="190" y="178">it by hand</text>
+            <text x="320" y="165">clean install</text><text x="320" y="178">works</text>
+            <text x="450" y="165">correct, cited,</text><text x="450" y="178">traced</text>
+            <text x="580" y="165">no refetch,</text><text x="580" y="178">under ceiling</text>
+            <text x="710" y="165">table regenerates</text><text x="710" y="178">from one command</text>
+            <text x="840" y="165">a stranger can</text><text x="840" y="178">run it</text>
+          </g>
+          <g fill="var(--muted)" font-size="9.5" font-weight="600" letter-spacing="1.2" text-anchor="start">
+            <text x="20" y="60">BUILDS</text>
+            <text x="20" y="200">GATE</text>
+          </g>
+        </g>
+        <line x1="18" y1="212" x2="882" y2="212" stroke="var(--line)" stroke-width="1"/>
+        <g font-family="Archivo, sans-serif" font-size="10.5" fill="var(--muted)">
+          <text x="18" y="232">Project 1 — the toolbox (phases 1–3)</text>
+          <text x="470" y="232">Project 2 — the agent (phases 4–6)</text>
+          <text x="800" y="232">Ship (7)</text>
+        </g>
+        <line x1="18" y1="219" x2="380" y2="219" stroke="var(--accent)" stroke-width="2"/>
+        <line x1="470" y1="219" x2="770" y2="219" stroke="var(--accent)" stroke-width="2"/>
+        <line x1="800" y1="219" x2="882" y2="219" stroke="var(--accent)" stroke-width="2"/>
+      </svg>
+      <figcaption>The gate is the point. A phase is not finished when the code runs — it is finished when the condition underneath it is true and you can demonstrate it. Phase 3 is where Project 1 becomes independently demonstrable; everything after it is Project 2 standing on top.</figcaption>
+    </figure>
+    <div class="toc">
+      <a href="#p1">1 · Ground truth</a>
+      <a href="#p2">2 · The four tools</a>
+      <a href="#p3">3 · MCP server</a>
+      <a href="#p4">4 · Agent loop</a>
+      <a href="#p5">5 · Memory</a>
+      <a href="#p6">6 · Evaluation</a>
+      <a href="#p7">7 · Write-up</a>
+      <a href="#gates">Gate summary</a>
+      <a href="#selftest">Self-test</a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ PHASE 1 ============ -->
+  <article class="phase" id="p1" data-phase="1">
+    <div class="head">
+      <div class="num">01</div>
+      <div class="t">
+        <h2>Get one number out of one filing</h2>
+        <p class="sub">Prove you can reach real data, by hand, before you design a single abstraction around it.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">Everything downstream assumes you can name a company, name a document, and name a number precisely. That sounds trivial and it is not: a filing has a fiscal period that is not a calendar year, a number has a unit and a basis, and the same figure appears restated in a later filing. If you skip this phase you will spend Phase 6 unable to tell a broken tool from a broken agent.</p>
+
+      <div class="stage">
+        <h3><span class="sn">1.1</span> Learn the shape of the source</h3>
+        <p>Not a tutorial — reconnaissance. You are mapping what EDGAR will and will not give you before you commit to a design.</p>
+        <ul class="steps">
+          <li><span>Find how a ticker maps to a CIK, and confirm the mapping is a file you can hold locally rather than a lookup you make every call</span></li>
+          <li><span>Fetch one company's submissions record and read it until you can say what a single entry contains: form type, filing date, period of report, accession number, primary document</span></li>
+          <li><span>Open the same filing three ways — the index page, the primary HTML document, and the XBRL data — and note what each one is good for</span></li>
+          <li><span>Read the access rules: the contact-email header EDGAR requires, and the request rate it expects. Write both down as constraints, not suggestions</span></li>
+          <li><span>Put the contact email in an environment file from the very first request. Never in source, not even temporarily</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">1.2</span> Pin one number, two independent ways</h3>
+        <p>This is the actual deliverable of the phase.</p>
+        <ul class="steps">
+          <li><span>Choose one company, one annual filing, one line item — long-term debt is a good first target because it appears in the statements, the notes, and the narrative</span></li>
+          <li><span>Read the number off the document yourself, like a human. Record the value, the units, the period, and where on the page you found it</span></li>
+          <li><span>Pull the same number from the structured XBRL data. Record the concept name, the unit, the period type, and the filing it came from</span></li>
+          <li><span>Reconcile them. If they differ, find out why before moving on — scaling, a different concept, a restatement, or the wrong period. The reason is more valuable than the match</span></li>
+          <li><span>Repeat for one quarterly filing, so you meet duration-vs-instant periods and fiscal-quarter labelling early</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">1.3</span> Set up the workbench</h3>
+        <p>Small, boring, and it saves the entire project. Do it now, while there is almost nothing to break.</p>
+        <ul class="steps">
+          <li><span>Repo skeleton with a clear split between fetching, deriving, and using — you do not need the final structure, you need the seam between “talks to the network” and “everything else”</span></li>
+          <li><span>A cache: every network response written to disk under a key derived from the request, read back on a hit, never silently invalidated</span></li>
+          <li><span>Prove the cache works by disconnecting from the network and re-running the same script successfully</span></li>
+          <li><span>Pick the universe: 5–10 companies, three years, annual plus quarterly. Prefer one sector so comparisons across companies are meaningful later</span></li>
+          <li><span>Start the decisions log with the first four entries: universe, identifier scheme, fiscal-year convention, cache policy</span></li>
+        </ul>
+      </div>
+
+      <div class="box dec">
+        <h4>Decisions to record</h4>
+        <ul>
+          <li><strong>The identifier.</strong> What is “a filing” to your system? One string that all four tools will speak. Choose it now — changing it in Phase 4 costs a day.</li>
+          <li><strong>Fiscal convention.</strong> Do you label by fiscal year as the company reports it, or by calendar period? Apple's FY ends in September; get this wrong and every comparison is quietly off by a quarter.</li>
+          <li><strong>Universe.</strong> Which companies, which forms, which years — and why those.</li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>One number, obtained two independent ways, agreeing — and the second run of your script completes with the network off.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Designing the tool interfaces before you have touched the data. You will invent parameters the source cannot support and miss the ones it demands. Also: no cache on day one, which turns every later iteration into a network wait and eventually a rate-limit block.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 2 ============ -->
+  <article class="phase" id="p2" data-phase="2">
+    <div class="head">
+      <div class="num">02</div>
+      <div class="t">
+        <h2>The four tools, as plain functions</h2>
+        <p class="sub">No agent, no protocol. Ordinary functions with tests — and the return shapes decided deliberately.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">This is the longest phase and the one that decides whether the project is any good. The craft is not in fetching — it is in what a call gives back. A tool that returns a whole document is a tool that destroys the agent using it. Every return here is designed to be small, to carry a citation, and to offer a way to ask for more.</p>
+
+      <div class="stage">
+        <h3><span class="sn">2.1</span> Normalise a document once</h3>
+        <p>Three of the four tools read the same underlying text. Turn a filing into a stable, addressable object before you write any of them.</p>
+        <ul class="steps">
+          <li><span>Convert the filing to text, preserving enough structure that a heading is still recognisable as a heading</span></li>
+          <li><span>Decide what happens to tables — the numbers you care about live in them, and naive text extraction turns a balance sheet into unreadable soup</span></li>
+          <li><span>Build a section map: each Item number to its span in the text. Expect the table of contents to fight you, since the headings appear twice</span></li>
+          <li><span>Verify the map on several filings from different companies — layouts differ more than you expect — and record how often it fails</span></li>
+          <li><span>Store the normalised text and its section map as derived files, so downstream work never re-parses</span></li>
+          <li><span>Make every position in the document addressable: section, plus offset. This is the backbone of citations</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">2.2</span> <code>list_filings</code> — the cheap one, first</h3>
+        <ul class="steps">
+          <li><span>Inputs: company, form type, year range. Output: a short list of compact records</span></li>
+          <li><span>Each record carries the identifier, form, fiscal period, filing date — enough for an agent to choose, nothing more</span></li>
+          <li><span>Cap the number returned and make the cap visible in the response, so nobody is guessing whether the list was complete</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">2.3</span> <code>get_fact</code> — the ground-truth channel</h3>
+        <p>The most valuable tool in the set, because it is the one that cannot hallucinate. It also has the most subtleties.</p>
+        <ul class="steps">
+          <li><span>Inputs: company, concept, period. Output: value, unit, period, and the filing it was reported in</span></li>
+          <li><span>Handle the naming problem — the concept a human says and the concept the taxonomy uses are rarely the same string. Decide whether you map synonyms, or return “not that name, did you mean these” with candidates</span></li>
+          <li><span>Handle multiple facts for one period — the same figure reported in the original filing and again in a later one. Decide which you return and say which you returned</span></li>
+          <li><span>Never silently coerce units or scale. A wrong unit is worse than a missing value</span></li>
+          <li><span>Test against the hand-verified numbers from Phase 1. These become your first golden tests</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">2.4</span> <code>search_filing</code> — locate, do not retrieve</h3>
+        <ul class="steps">
+          <li><span>Inputs: one filing, a query. Output: ranked hit locations, each with a short window of surrounding text</span></li>
+          <li><span>Keep it lexical. Honest and explainable beats clever here, and the whole point of the project is that there is no index</span></li>
+          <li><span>Return positions and snippets — never sections. The agent decides what is worth reading; that decision is the mechanism you are building</span></li>
+          <li><span>Cap the hit count and the snippet size; state both in the response</span></li>
+          <li><span>Make “no hits” a useful answer: say what was searched, and suggest the sections most likely to hold that kind of language</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">2.5</span> <code>read_section</code> — the budget lives here</h3>
+        <ul class="steps">
+          <li><span>Inputs: one filing, plus either an Item number or an offset range. Output: text, bounded</span></li>
+          <li><span>Set a hard ceiling on the returned size. Item 7 of a large filing is far past any sensible budget, so the ceiling will bite constantly — that is intended</span></li>
+          <li><span>When truncated, say so explicitly and return a cursor for continuing. Silent truncation is a bug the agent cannot see and you will chase for hours</span></li>
+          <li><span>Reject an unknown Item by listing the Items that do exist in that filing</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">2.6</span> Cross-cutting contracts</h3>
+        <p>Decide these once, apply to all four, or you will have four dialects by Phase 4.</p>
+        <ul class="steps">
+          <li><span>A single citation shape every tool attaches to every result</span></li>
+          <li><span>A single error shape — and errors that are instructions, not stack traces. “That Item does not exist here; available: …” is recoverable. A traceback is not</span></li>
+          <li><span>A size discipline: know the typical and worst-case return size of every tool, in characters. Write the numbers down</span></li>
+          <li><span>Offline tests built from cached fixtures, so the suite runs with no network</span></li>
+          <li><span>Start the eval question list here — every time you manually check something, that is a question with a known answer. Do not wait for Phase 6 to start collecting</span></li>
+        </ul>
+      </div>
+
+      <div class="box dec">
+        <h4>Decisions to record</h4>
+        <ul>
+          <li><strong>Return budget per tool</strong> — the number, and the reasoning behind it.</li>
+          <li><strong>Truncation protocol</strong> — how the caller learns there is more, and how it asks for it.</li>
+          <li><strong>Concept resolution</strong> — synonym mapping versus candidate suggestions.</li>
+          <li><strong>Restatement policy</strong> — original filing or latest report, and how the answer discloses which.</li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>Sitting at a prompt, calling only these four functions by hand, <em>you</em> can answer the target question — and you have written down the exact sequence of calls you made. That sequence is the trace your agent gets compared against in Phase 4.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Building a fifth tool that “just answers the question” because the four feel awkward. The awkwardness is the signal: fix the return shapes. Second trap: tools that return everything, so the human-play-agent exercise feels easy — it will feel easy right up until a real run floods the context window.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 3 ============ -->
+  <article class="phase" id="p3" data-phase="3">
+    <div class="head">
+      <div class="num">03</div>
+      <div class="t">
+        <h2>Wrap them as an MCP server</h2>
+        <p class="sub">The same functions, over the protocol. Project 1 becomes a thing you can hand to someone.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">A thin layer, and yet the phase where a hidden skill shows up: the tool description is the interface. The model never reads your implementation — it reads your name, your description, and your parameter docs, and then guesses. When it guesses wrong, that is your text failing, not the model failing. Finishing this phase also means you have something demonstrable before the agent exists, which is worth a lot if the rest slips.</p>
+
+      <div class="stage">
+        <h3><span class="sn">3.1</span> Expose, without adding logic</h3>
+        <ul class="steps">
+          <li><span>Server layer does argument validation, dispatch, and formatting. Nothing else. If you find yourself writing behaviour here, it belongs in Phase 2's functions</span></li>
+          <li><span>Schemas with real constraints — enumerate form types, bound year ranges, mark what is required</span></li>
+          <li><span>Same citation and error shapes as the plain functions, unchanged</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">3.2</span> Write the descriptions as product copy</h3>
+        <ul class="steps">
+          <li><span>For each tool: what it is for, when to prefer it over its neighbour, what it costs, what it returns</span></li>
+          <li><span>State the boundary explicitly — <code>get_fact</code> for a reported figure, <code>search_filing</code> when you need language rather than a number. Overlap is where the model picks wrong</span></li>
+          <li><span>Put an example call in the description. It is the cheapest steering there is</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">3.3</span> Drive it from a real client</h3>
+        <p>Connect a desktop client and use it as a user would. This is your first honest signal.</p>
+        <ul class="steps">
+          <li><span>Ask the target question and watch the sequence of calls, without helping</span></li>
+          <li><span>Ask three or four deliberately awkward questions — vague company, wrong year, a figure that is not in a filing at all</span></li>
+          <li><span>Every wrong tool choice: change the description, retry, note what changed. This is the first entry in your experiment log</span></li>
+          <li><span>Log every call server-side — tool, arguments, bytes returned, duration. You need this instrumentation in place <em>before</em> the agent starts making calls faster than you can read</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">3.4</span> Make it installable</h3>
+        <ul class="steps">
+          <li><span>Install steps someone else can follow without asking you a question</span></li>
+          <li><span>Configuration example, with the contact-email requirement called out</span></li>
+          <li><span>Sane first-run behaviour on a machine with an empty cache — slow is fine, confusing is not</span></li>
+          <li><span>Do the clean-profile test yourself, following only your own written steps</span></li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>From a clean setup, following only the README, the server installs, a client connects, and a multi-filing question gets a correct answer — and you have the server-side log of exactly which calls it took.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Descriptions written for a human reader who already knows the system. Also: quietly adding “helpful” behaviour in the server that the plain functions do not have, so Phase 2's tests stop describing reality.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 4 ============ -->
+  <article class="phase" id="p4" data-phase="4">
+    <div class="head">
+      <div class="num">04</div>
+      <div class="t">
+        <h2>Write the agent loop</h2>
+        <p class="sub">Yours, by hand, no framework. Roughly 150 lines and most of the learning in the project.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">The loop is small. What makes it worth writing yourself is that every hard decision in agent engineering shows up in it undisguised: when to stop, what to do with a tool that returned nonsense, how errors get back to the model, what the model is allowed to claim. Use a framework and those decisions are made for you by someone else, invisibly, and you learn nothing you can defend in an interview.</p>
+
+      <div class="stage">
+        <h3><span class="sn">4.1</span> The skeleton</h3>
+        <ul class="steps">
+          <li><span>Question in, tool definitions attached, model call, inspect the response</span></li>
+          <li><span>If it asked for a tool: execute, append the result in the shape the protocol expects, loop</span></li>
+          <li><span>If it answered in text: stop and return</span></li>
+          <li><span>Keep the message list as the single source of truth for the run. Resist the urge to keep parallel state early on</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">4.2</span> Stopping — decided, not accidental</h3>
+        <p>A loop without deliberate stop conditions is a loop that will spend real money while you watch.</p>
+        <ul class="steps">
+          <li><span>Ceilings on iterations, total tokens, and wall-clock time — each one distinct, each one logged when hit</span></li>
+          <li><span>Detect the repeat: the same call with the same arguments twice. Decide what happens — refuse and tell it, or serve the cached result with a note</span></li>
+          <li><span>Decide what a forced stop returns. A partial answer with citations beats silence, but it must be labelled partial</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">4.3</span> Execution and failure handling</h3>
+        <ul class="steps">
+          <li><span>Validate arguments before executing, and return validation failures as tool results — never as exceptions that kill the run</span></li>
+          <li><span>Catch everything at the boundary. An unhandled exception in a tool should end as a message the model can read and route around</span></li>
+          <li><span>Write error text that suggests the next move. Compare recovery behaviour between a bare failure and a failure with candidates — this is a real, measurable experiment</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">4.4</span> The system prompt as policy</h3>
+        <ul class="steps">
+          <li><span>State what the tools are for and the preference order between them</span></li>
+          <li><span>Require a citation for every figure, and require “not found” over a guess</span></li>
+          <li><span>Say explicitly that a number must come from a tool result, never from prior knowledge — the model has read a lot of filings and will happily supply a plausible one</span></li>
+          <li><span>Keep it short and version it. When you change it, that is an experiment with a before and an after</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">4.5</span> Citations, checked mechanically</h3>
+        <ul class="steps">
+          <li><span>Collect citations as structured data as tool results come back, not by parsing the final prose</span></li>
+          <li><span>After the answer, verify every figure it states appears in some tool result from this same run</span></li>
+          <li><span>Failing that check is a first-class outcome, reported and counted — this single check is your cheapest hallucination detector and it will fire more than you expect</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">4.6</span> Make every run inspectable</h3>
+        <ul class="steps">
+          <li><span>Write the full run to a file: question, every message, every call and result, tokens, timings, stop reason</span></li>
+          <li><span>One file per run, named so you can find it. You will read hundreds of these</span></li>
+          <li><span>Fix the sampling settings and record them, so a difference between two runs is more likely to mean something</span></li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>The target question, answered end to end from the command line, with citations that pass the mechanical check — and you have compared the agent's call sequence against the one you performed by hand in Phase 2 and can explain every difference.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Reaching for a framework the first time the loop misbehaves. Swallowing errors so the run “succeeds” while doing nothing. And accepting a right answer without reading the trace — early on, a correct answer arrived at for a broken reason is the most expensive thing that can happen to you.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 5 ============ -->
+  <article class="phase" id="p5" data-phase="5">
+    <div class="head">
+      <div class="num">05</div>
+      <div class="t">
+        <h2>Memory and context budget</h2>
+        <p class="sub">Stop it re-fetching, and stop long runs from drowning in their own transcript.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">A loop that works on a three-call question falls apart on a twelve-call one, and the failure is not obvious — the transcript fills with old filing text, the model loses the thread, and the answer degrades without erroring. Treating the context window as a budget you actively manage is the difference between a demo question and a real one.</p>
+
+      <div class="stage">
+        <h3><span class="sn">5.1</span> Measure before you fix</h3>
+        <ul class="steps">
+          <li><span>Instrument context size per turn and cumulative, and record it in the run file</span></li>
+          <li><span>Run several multi-filing questions and look at the growth curve — find which tool returns dominate</span></li>
+          <li><span>Count duplicate calls across a run. Write the number down; it is your before</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">5.2</span> Within-session memory</h3>
+        <ul class="steps">
+          <li><span>Key results by the call signature, so an identical call is recognised</span></li>
+          <li><span>Decide the response to a repeat: return the cached payload again, or a short pointer to where it already sits in the transcript. These behave differently; pick deliberately and note why</span></li>
+          <li><span>Keep a running store of established facts — value, unit, period, citation — separate from the message list</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">5.3</span> Compaction</h3>
+        <ul class="steps">
+          <li><span>Set a threshold at which old tool results get summarised and the raw text dropped</span></li>
+          <li><span>Hard rule: compaction never drops an established fact or its citation. Those move into the fact store first, then the raw text goes</span></li>
+          <li><span>Log every compaction event — what was dropped, what survived, size before and after</span></li>
+          <li><span>Test it deliberately with a question long enough to trigger it, and confirm the answer is still right</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">5.4</span> Behaviour at the ceiling</h3>
+        <ul class="steps">
+          <li><span>Decide what happens when the budget is exhausted: compact and continue, or stop and answer with what is held</span></li>
+          <li><span>Whichever you choose, the answer says so. A confident answer built on a truncated run is the worst output your system can produce</span></li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>On a question needing eight or more calls: zero duplicate fetches, peak context under your stated ceiling, answer still correct — with the before-and-after numbers in the experiment log.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Compaction that eats the number you already found, so the agent goes and fetches it again — or worse, fills the gap from memory. Also: adding memory before measuring, which leaves you unable to say whether it helped.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 6 ============ -->
+  <article class="phase" id="p6" data-phase="6">
+    <div class="head">
+      <div class="num">06</div>
+      <div class="t">
+        <h2>Evaluation and traces</h2>
+        <p class="sub">The phase that turns a demo into an engineering project. Start collecting questions in Phase 2; industrialise here.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">This is the scarcest skill in the field and the reason your repo will not look like the hundred others built on the same public filings. Anyone can show one good answer. Being able to say <em>where</em> your system fails, how often, and what each question costs is a different category of claim — and it is only available to you if you built the measuring apparatus.</p>
+
+      <div class="stage">
+        <h3><span class="sn">6.1</span> Design the question set</h3>
+        <p>50–100 questions, deliberately tiered so a score tells you something specific rather than an average of unlike things.</p>
+        <ul class="steps">
+          <li><span><strong>Tier 1 — single fact.</strong> One reported figure, one company, one period. Answer key comes straight from XBRL, so grading is automatic and free</span></li>
+          <li><span><strong>Tier 2 — single document, narrative.</strong> Requires finding and reading the right section of one filing</span></li>
+          <li><span><strong>Tier 3 — multi-filing.</strong> Several documents, figures plus narrative. Your target question lives here</span></li>
+          <li><span><strong>Tier 4 — traps.</strong> Answers that are not in the filings, companies outside the universe, periods not yet filed. Correct behaviour is a clean refusal, and a system that never refuses is broken regardless of its accuracy</span></li>
+          <li><span>Keep the distribution honest — do not stack it with Tier 1 to make the headline number look good</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">6.2</span> Answer keys</h3>
+        <ul class="steps">
+          <li><span>Numeric keys derived programmatically from XBRL, with unit and period attached</span></li>
+          <li><span>Narrative keys as required elements — the claim that must appear and the citation that must back it — rather than a model answer to match word for word</span></li>
+          <li><span>Hand-check a sample of the generated keys. Automated ground truth is only ground truth if you have audited it once</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">6.3</span> The scorer</h3>
+        <ul class="steps">
+          <li><span>Numbers: compare value, unit, and period together. A right number for the wrong period is wrong</span></li>
+          <li><span>Set a tolerance and state it — rounding and scaling are real, and pretending otherwise gives you false failures</span></li>
+          <li><span>Citation validity as its own score: does the cited location actually contain what was claimed</span></li>
+          <li><span>Refusal correctness as its own score, over the Tier 4 questions</span></li>
+          <li><span>For narrative grading, a model judge against a written rubric — with a human spot-check of a sample, so you know how far the judge can be trusted</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">6.4</span> Metrics worth reporting</h3>
+        <ul class="steps">
+          <li><span>Accuracy by tier, never a single blended figure</span></li>
+          <li><span>Average and worst-case tool calls per question</span></li>
+          <li><span>Tokens in and out, and cost per question</span></li>
+          <li><span>Latency, median and tail</span></li>
+          <li><span>Refusal rate, split into correct refusals and refusals on answerable questions</span></li>
+          <li><span>Failure taxonomy with counts — the deliverable the write-up is built on</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">6.5</span> Classify failures by cause</h3>
+        <p>The distinction that makes the whole apparatus worth having.</p>
+        <ul class="steps">
+          <li><span>Wrong tool chosen — a description problem</span></li>
+          <li><span>Right tool, wrong arguments — a schema or naming problem</span></li>
+          <li><span>Right data retrieved, wrong conclusion drawn — a reasoning problem</span></li>
+          <li><span>Ran out of budget before finishing — a context or efficiency problem</span></li>
+          <li><span>Answered without support — a policy and verification problem</span></li>
+          <li><span>Tag every failed run by hand until the categories stop changing, then let the counts stand</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">6.6</span> Run experiments like experiments</h3>
+        <ul class="steps">
+          <li><span>One change at a time, whole set re-run, before and after recorded</span></li>
+          <li><span>At least three experiments worth writing up — a tool description rewrite, a return-budget change, and memory on versus off are the natural three</span></li>
+          <li><span>Keep the ones that did not help. A recorded negative result is the strongest signal in the repo that the numbers are real</span></li>
+          <li><span>A trace viewer, however plain, so a failed run can be read end to end without scrolling raw logs</span></li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>A results table regenerated by a single command with nothing hand-edited, plus your three most common failure modes named with counts behind them, plus at least one experiment that made things worse and is written down anyway.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>Waiting until the agent is good before starting. It teaches you most while it is still bad — that is when the failure categories are visible. Second trap: quietly tuning against the eval set until the number looks good, which measures your tuning, not your system.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PHASE 7 ============ -->
+  <article class="phase" id="p7" data-phase="7">
+    <div class="head">
+      <div class="num">07</div>
+      <div class="t">
+        <h2>Write it up</h2>
+        <p class="sub">The part that turns a repo into something worth showing. Assembled from the two logs, not from memory.</p>
+      </div>
+      <div class="prog" data-prog>0/0</div>
+    </div>
+    <div class="body">
+      <p class="why">The reader of your repo spends ninety seconds deciding whether you are a person who builds things or a person who follows tutorials. What separates the two is not the code — it is whether you can state your own system's limits in specific numbers. That is the whole point of the previous phase, and this is where it gets cashed in.</p>
+
+      <div class="stage">
+        <h3><span class="sn">7.1</span> The README</h3>
+        <ul class="steps">
+          <li><span>Open with the question the system exists to answer, and why it cannot be answered by similarity search</span></li>
+          <li><span>The architecture, in one diagram: tools, protocol boundary, loop</span></li>
+          <li><span>A real trace, pasted in — the actual calls for the target question, not a cleaned-up illustration</span></li>
+          <li><span>The results table, straight from the harness</span></li>
+          <li><span>The three failure modes, named, with counts and one example each</span></li>
+          <li><span>Cost and latency per question, stated plainly</span></li>
+          <li><span>What you would do next, and what you deliberately left out and why</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">7.2</span> Make it runnable by a stranger</h3>
+        <ul class="steps">
+          <li><span>Setup that works from an empty directory, with the contact-email requirement explained rather than assumed</span></li>
+          <li><span>An example environment file; the real one never committed</span></li>
+          <li><span>Cache and run artefacts excluded from the repo, with a note on what they are</span></li>
+          <li><span>One command for the demo question, one for the eval suite</span></li>
+          <li><span>Actually clone it fresh into a new directory and follow your own instructions</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">7.3</span> The demo</h3>
+        <ul class="steps">
+          <li><span>A short terminal recording of the target question — tool calls visible, answer with citations at the end</span></li>
+          <li><span>Include one failure in the write-up, chosen deliberately. It reads as confidence, not weakness</span></li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <h3><span class="sn">7.4</span> Split the story in two</h3>
+        <ul class="steps">
+          <li><span>Project 1 stands alone: an MCP server someone else can install and point a client at</span></li>
+          <li><span>Project 2 stands on top: an agent that answers questions no single document contains</span></li>
+          <li><span>Say this explicitly in the README. Two claims land harder than one, and the first is verifiable by the reader in five minutes</span></li>
+        </ul>
+      </div>
+
+      <div class="box gate">
+        <h4>Done gate</h4>
+        <p>Someone who has never seen the project clones it, follows the README, and gets a correct cited answer — without asking you anything.</p>
+      </div>
+
+      <div class="box trap">
+        <h4>Where this goes wrong</h4>
+        <p>A README that describes ambitions rather than measurements. Every claim in it should be traceable to a number the harness produced.</p>
+      </div>
+    </div>
+  </article>
+
+  <hr class="rule">
+
+  <section id="gates">
+    <div class="sechead col">
+      <p class="eyebrow">Reference</p>
+      <h2>Gate summary</h2>
+      <p class="lede">If you are unsure whether a phase is finished, this is the only test that counts.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Phase</th><th>You may move on when</th></tr></thead>
+        <tbody>
+          <tr><td class="p">01</td><td>Ground truth</td><td>One number obtained two independent ways, agreeing — and a second run completes offline.</td></tr>
+          <tr><td class="p">02</td><td>Four tools</td><td>You answer the target question by hand using only the four functions, and have written down the call sequence.</td></tr>
+          <tr><td class="p">03</td><td>MCP server</td><td>A clean install from your README yields a correct answer, with a server-side log of the calls.</td></tr>
+          <tr><td class="p">04</td><td>Agent loop</td><td>End-to-end answer with citations that pass the mechanical check, and you can explain how its trace differs from yours.</td></tr>
+          <tr><td class="p">05</td><td>Memory</td><td>Eight-plus-call question: no duplicate fetches, under the context ceiling, still correct — with before/after numbers.</td></tr>
+          <tr><td class="p">06</td><td>Evaluation</td><td>Results table regenerated by one command; three failure modes named with counts; one honest negative result.</td></tr>
+          <tr><td class="p">07</td><td>Write-up</td><td>A stranger clones, follows the README, and gets a correct cited answer unaided.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="selftest">
+    <div class="sechead col">
+      <p class="eyebrow">Before you call it done</p>
+      <h2>Self-test</h2>
+      <p class="lede">Out loud, without notes. Anything you cannot answer is unfinished work, not a gap in your presentation.</p>
+    </div>
+    <ul class="steps col">
+      <li><span>Explain what each of the four tools returns, and why it is that size and not larger</span></li>
+      <li><span>Walk through one real trace call by call, and say why the agent chose each tool</span></li>
+      <li><span>Name your three most common failure modes and the counts behind them</span></li>
+      <li><span>Say what one question costs and how long it takes, median and tail</span></li>
+      <li><span>Explain how you tell a retrieval failure apart from a reasoning failure — using the data, not intuition</span></li>
+      <li><span>Describe one change you made that made things worse, and how you knew</span></li>
+      <li><span>Answer: why is there no vector database in this project?</span></li>
+      <li><span>Answer: what breaks first if you go from ten companies to five hundred?</span></li>
+      <li><span>Answer: how would you stop it stating a number that never appeared in a tool result?</span></li>
+    </ul>
+  </section>
+
+  <footer class="col">
+    <p><strong>Filing Desk</strong> — build plan, companion to the scope document. Phase numbering matches the scope's build order. Nothing here names a library, a model, or a package: the stack is your call, made phase by phase, and recorded in the decisions log as you go.</p>
+    <p style="margin-top:.7rem"><small>Checkbox state is saved in this browser only. If the plan text changes, ticks on changed lines reset.</small></p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  // give every step a checkbox, persist locally
+  var lists = document.querySelectorAll('ul.steps');
+  function key(el, pi, i){ return 'fd-plan:' + pi + ':' + i; }
+  lists.forEach(function(ul){
+    var art = ul.closest('.phase');
+    var pi = art ? art.getAttribute('data-phase') : 'x';
+    Array.prototype.forEach.call(ul.children, function(li, i){
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      var k = key(li, pi, i);
+      try { cb.checked = localStorage.getItem(k) === '1'; } catch(e){}
+      if (cb.checked) li.classList.add('done');
+      cb.addEventListener('change', function(){
+        li.classList.toggle('done', cb.checked);
+        try { localStorage.setItem(k, cb.checked ? '1' : '0'); } catch(e){}
+        update();
+      });
+      li.insertBefore(cb, li.firstChild);
+    });
+  });
+  function update(){
+    document.querySelectorAll('.phase').forEach(function(art){
+      var boxes = art.querySelectorAll('ul.steps input[type=checkbox]');
+      var done = 0;
+      boxes.forEach(function(b){ if(b.checked) done++; });
+      var el = art.querySelector('[data-prog]');
+      if (el) el.textContent = done + '/' + boxes.length;
+    });
+  }
+  update();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "t3-debt-disclosures-fy2022-fy2024",
+    "tier": 3,
+    "question": "For each of Apple's FY2022, FY2023 and FY2024 10-Ks, report: (1) the weighted-average interest rate on commercial paper at year end; (2) from the liquidity discussion, the aggregate principal amount of fixed-rate notes and how much of it was payable within 12 months; and (3) total future interest payments on the Notes. Present one row per fiscal year.",
+    "expect": {
+      "percents": [2.31, 5.28, 5.0],
+      "amounts": [
+        111800000000, 11100000000, 41300000000,
+        106600000000, 9900000000, 41100000000,
+        97300000000, 10900000000, 38500000000
+      ]
+    }
+  }
+]
